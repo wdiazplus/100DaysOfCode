@@ -31,7 +31,7 @@ api = tweepy.API(auth , wait_on_rate_limit=True , wait_on_rate_limit_notify=True
 # print(json.dumps(data_adidas._json, indent=2))
 
 # Obtener #seguidores de una cuenta(usuario)
-data_followers = api.followers(screen_name="adidas")
+#data_followers = api.followers(screen_name="adidas")
 # print(len(data_followers))
 
 # for user in data_followers:
@@ -39,6 +39,33 @@ data_followers = api.followers(screen_name="adidas")
 
 # Una Clase de tweepy para obtener un grupo de información deseada es:
 
-for user in tweepy.Cursor(api.followers,screen_name="adidas").items(100):
-    print(json.dumps(user._json, indent=2))
+# for user in tweepy.Cursor(api.followers,screen_name="adidas").items(10):
+    # print(json.dumps(user._json, indent=2))
+
+#  Una clase de tweepy para obntener los seguidos de un usuario:
+
+# for user in tweepy.Cursor(api.friends,screen_name="adidas").items(10):
+#   print(json.dumps(user._json, indent=2))
+
+
+# Una clase para obtener todos los tweets de un usuario
+# for tweet in tweepy.Cursor(api.user_timeline, screen_name="adidas", tweet_mode = "extended").items(2):
+#     print(json.dumps(tweet._json, indent=2))
+    
+
+#Busqueda de tweets
+
+# for tweet in tweepy.Cursor(api.search, q="covid-19", tweet_mode="extended").items(2):
+#     print(json.dumps(tweet._json, indent=2))
+
+
+# Extraer informacion de un tema específico
+
+for tweet in tweepy.Cursor(api.search, q = "covid-19", tweet_mode="extended").items(40):
+    print(json.dumps(tweet._json["full_text"],indent=2))
+   
+
+
+
+
 
